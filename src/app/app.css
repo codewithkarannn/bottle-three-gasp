@@ -1,0 +1,125 @@
+/*:host {*/
+/*  display: block;*/
+/*  overflow-x: hidden; !* Prevent horizontal scrollbars during animation *!*/
+/*}*/
+
+/*.pin-container {*/
+/*  height: 100vh;      !* Full screen height *!*/
+/*  width: 100%;*/
+/*  display: flex;*/
+/*  align-items: center; !* Vertically centers text *!*/
+/*  justify-content: center;*/
+/*  overflow: hidden;*/
+/*  position: relative;*/
+/*  background: #ffffff;    !* Dark background for contrast *!*/
+/*}*/
+
+
+/*.scroll-text {*/
+/*  font-size: 8vw;*/
+/*  font-weight: 800;*/
+/*  white-space: nowrap;*/
+/*  transform: translateX(5vw); !* Starts on the left side *!*/
+/*  will-change: transform;*/
+/*}*/
+
+/*.letter {*/
+/*  !**/
+/*     Critical: Transforms (like 'y') don't work on*/
+/*     standard inline spans. inline-block is a must!*/
+/*  *!*/
+/*  display: inline-block;*/
+/*  will-change: transform;*/
+/*}*/
+/*!* Base style for both paragraphs *!*/
+/*.side-para {*/
+/*  position: absolute; !* Keep them in corners, NOT following the big text *!*/
+/*  font-size: 0.9rem;*/
+/*  color: #666;*/
+/*  max-width: 450px;*/
+/*  opacity: 0; !* Hidden on refresh *!*/
+/*  will-change: transform, opacity;*/
+/*}*/
+/*!* Positioning the Paras *!*/
+/*.top-left {*/
+/*  top: 15%;*/
+/*  left: 5%;*/
+/*  !* Start 50px lower so it can "rise up" *!*/
+/*  transform: translateY(50px);*/
+/*}*/
+
+/*.bottom-right {*/
+/*  bottom: 15%;*/
+/*  right: 5%;*/
+/*  !* Start 50px higher so it can "rise down" (inverse) *!*/
+/*  transform: translateY(-50px);*/
+/*}*/
+
+
+.pin-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+/* THE CIRCLE */
+.expand-circle {
+  position: absolute;
+  width: 50px;       /* Small starting size */
+  height: 50px;
+  background: black; /* Your choice of color */
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px; /* Centers the circle perfectly */
+  margin-left: -25px;
+  transform: scale(0); /* Starts invisible */
+  z-index: 1;         /* Behind text but above background */
+}
+
+.scroll-text {
+  font-size: 10vw;
+  font-weight: 800;
+  white-space: nowrap;
+  transform: translateX(5vw);
+  z-index: 2; /* Keep text above the circle until it expands */
+}
+
+.scroll-text-black {
+  font-size: 10vw;
+  font-weight: 800;
+  white-space: nowrap;
+  color: white;
+  transform: translateX(5vw);
+  z-index: 2; /* Keep text above the circle until it expands */
+}
+
+.side-para {
+  position: absolute;
+  max-width: 350px;
+
+  opacity: 0; /* Hidden initially */
+  z-index: 3;
+}
+.webgl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  outline: none;
+  display: block;
+  z-index: 4; /* above the text */
+  pointer-events: none; /* Allows you to still scroll through it */
+}
+
+.top-left { top: 15%; left: 5%; transform: translateY(50px); }
+.bottom-right { bottom: 15%; right: 5%; transform: translateY(-50px); }
+
+.spacer { height: 100vh; }
+.dark-section { background: black; }
