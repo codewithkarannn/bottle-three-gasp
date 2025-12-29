@@ -22,6 +22,13 @@ export class App implements AfterViewInit { // 3. Use AfterViewInit
   @ViewChild('paraRight') paraRight!: ElementRef;
   @ViewChild('circle') circle!: ElementRef;
   @ViewChild('threeCanvas') threeCanvas!: ElementRef;
+  @ViewChild('secondText') secondText!: ElementRef;
+  @ViewChild('dotLeft') dotLeft!: ElementRef;
+  @ViewChild('dotRight') dotRight!: ElementRef;
+  @ViewChild('connectionLineLeft') connectionLineLeft!: ElementRef;
+  @ViewChild('connectionLineRight') connectionLineRight!: ElementRef;
+  @ViewChild('conectionLineRightContent') connectionLineRightContent!: ElementRef;
+  @ViewChild('conectionLineLeftContent') connectionLineLeftContent!: ElementRef;
   private model: THREE.Group | null = null;
   private tl!: gsap.core.Timeline;
   ngAfterViewInit() {
@@ -82,8 +89,9 @@ export class App implements AfterViewInit { // 3. Use AfterViewInit
       // 5. THE SCROLL ROTATION
       // We animate the MODEL's rotation.y inside the tilted pivot.
       this.tl.to(this.model.rotation, {
-        y: Math.PI * 6, // Spins around the tilted axis
+        y: Math.PI * 8, // Spins around the tilted axis
         ease: 'none',
+        duration: 2.5
       }, 0);
     });
     // 7. ANIMATION LOOP: Runs every frame
@@ -134,7 +142,7 @@ export class App implements AfterViewInit { // 3. Use AfterViewInit
       scrollTrigger: {
         trigger: this.container.nativeElement,
         start: 'top top',
-        end: '+=3000', // Increased duration to fit all animations
+        end: '+=5000',
         scrub: 1,
         pin: true,
         anticipatePin: 1
@@ -176,6 +184,48 @@ export class App implements AfterViewInit { // 3. Use AfterViewInit
       duration: 0.2,
       ease: 'power2.in' // Starts slow, gets fast
     }, 0.2);
+
+
+    this.tl.to(this.secondText.nativeElement, {
+      x: '-150vw', // Move from 100vw (CSS) all the way to the left
+      ease: 'none',
+    }, 0.3);
+
+
+    // 1. Dots appear (Fade in at 2.2 just as text exits)
+    this.tl.to([this.dotLeft.nativeElement, this.dotRight.nativeElement], {
+      opacity: 1,
+      scale: 1.5,
+      duration: 0.1
+    }, 0.5);
+
+    // 2. Line appears and "Draws"
+
+    this.tl.to(this.connectionLineLeft.nativeElement, {
+      opacity: 1,
+      width: '27%', // Adjust based on your screen/angle
+      duration: 0.1,
+      ease: 'power2.inOut'
+    }, 0.6); // Starts slightly after dots appear
+
+    this.tl.to(this.connectionLineRight.nativeElement, {
+      opacity: 1,
+      width: '27%', // Adjust based on your screen/angle
+      duration: 0.1,
+      ease: 'power2.inOut'
+    }, 0.6); // Starts slightly after dots appear
+
+    this.tl.to([this.connectionLineRightContent.nativeElement], {
+      opacity: 1,
+      y: 0,
+      duration: 0.1
+    }, 0.7);
+
+    this.tl.to([this.connectionLineLeftContent.nativeElement], {
+      opacity: 1,
+      y: 0,
+      duration: 0.1
+    }, 0.7);
 
 
 

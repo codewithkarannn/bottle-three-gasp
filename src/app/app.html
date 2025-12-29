@@ -1,22 +1,5 @@
 
 
-<!--&lt;!&ndash; This section will "stick" while you scroll &ndash;&gt;-->
-<!--<div #container class="pin-container">-->
-<!--  <p #paraLeft class="side-para top-left">-->
-<!--    Engineered with triple-layered vacuum insulation to keep your hydration at peak temperature for 24 hours straight.-->
-
-<!--  </p>-->
-
-<!--  <h2 #animatedText class="scroll-text">Cold that conquers. </h2>-->
-
-<!--  <p #paraRight class="side-para bottom-right">-->
-<!--    From high-altitude trails to high-intensity training,  this rugged 32oz companion is built to endure every environment you conquer.-->
-<!--  </p>-->
-<!--</div>-->
-<!--<div class="spacer dark-section">-->
-<!--  <h1 style="color: white;">Screen is now Black</h1>-->
-<!--</div>-->
-
 
 <div #container class="pin-container">
   <canvas #threeCanvas class="webgl"></canvas>
@@ -28,10 +11,28 @@
   <p #paraRight class="side-para bottom-right">  From high-altitude trails to high-intensity training,  this rugged 32oz companion is built to endure every environment you conquer.</p>
 
   <!-- Main Animated Text -->
-  <h2 #animatedText class="scroll-text">Cold that conquers.</h2>
+  <h2 #animatedText class="scroll-text">Conquer the heat with</h2>
+  <!-- NEW: The Second Text (White text for the black background) -->
+  <h2 #secondText class="second-scroll-text">Hydra peak</h2>
 
 
+  <!-- NEW: Dots and Line -->
+  <div #dotLeft class="magic-dot dot-tl"></div>
+  <div #dotRight class="magic-dot dot-br"></div>
 
+  <div #connectionLineLeft class="magic-line"></div>
+  <div #connectionLineRight class="magic-line-right"></div>
+
+  <div #conectionLineRightContent class="line-right-content-wrapper">
+    <p  class="line-right-content-title">Protective Rubber Boot</p>
+    <p  class="line-right-content">Includes a removable silicone base to prevent dents, scratches, and noisy clanking on hard surfaces.</p>
+
+  </div>
+
+  <div #conectionLineLeftContent class="line-left-content-wrapper">
+    <p  class="line-left-content-title">Leak-Proof Straw Lid</p>
+    <p  class="line-left-content">A high-flow, flip-up straw designed for one-handed operation without the risk of spills in your bag.</p>
+  </div>
 
 </div>
 

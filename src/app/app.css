@@ -90,25 +90,28 @@
   z-index: 2; /* Keep text above the circle until it expands */
 }
 
-.scroll-text-black {
-  font-size: 10vw;
+
+
+.second-scroll-text {
+  position: absolute;
+  font-size: 8vw;
   font-weight: 800;
   white-space: nowrap;
-  color: white;
-  transform: translateX(5vw);
-  z-index: 2; /* Keep text above the circle until it expands */
+  color: white; /* White text for black background */
+  z-index: 2;   /* Higher than the circle (which is z-index 1) */
+  transform: translateX(100vw);
+  pointer-events: none;
 }
 
 .side-para {
   position: absolute;
   max-width: 350px;
-
   opacity: 0; /* Hidden initially */
   z-index: 3;
 }
 .webgl {
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -123,3 +126,101 @@
 
 .spacer { height: 100vh; }
 .dark-section { background: black; }
+
+/* Style for both dots */
+.magic-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: darkgrey;
+  border-radius: 50%;
+  z-index: 15;
+  opacity: 0; /* Hidden initially */
+  box-shadow: 0 0 15px white; /* Optional glow */
+}
+
+/* Position dots at para locations */
+.dot-tl { top: 280px; left: 5%; }
+.dot-br { bottom: 280px; right: 5%; }
+
+/* The Line */
+.magic-line {
+  position: absolute;
+  top: 282px; /* Starts at top dot */
+  left: 5%;
+  height: 1px;
+  background: darkgrey;
+  z-index: 14;
+  width: 0; /* GSAP will animate this */
+  transform-origin: left center;
+  opacity: 0;
+}
+
+.magic-line-right {
+  position: absolute;
+  bottom: 282px; /* Starts at top dot */
+  right: 5%;
+  height: 1px;
+  background: darkgrey;
+  z-index: 14;
+  width: 0; /* GSAP will animate this */
+  transform-origin: left center;
+  opacity: 0;
+}
+/* Update your CSS to target the wrapper */
+.line-right-content-wrapper {
+  position: absolute;
+  bottom: 235px;/* Position it near your bottom dot */
+  right: 5%;
+  width: 340px;
+  text-align: left;
+  opacity: 0;      /* Start hidden */
+  z-index: 100;    /* High value to be above everything */
+  pointer-events: none;
+  transform: translateY(30px); /* Start slightly lower for a rise effect */
+}
+
+.line-right-content-title {
+  font-size: 1.2rem;
+  padding: 4px;
+  right: 8%;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.line-right-content {
+  font-size: 0.85rem;
+
+  color: #ffffff;
+  margin: 5px 0 0 0;
+}
+
+
+.line-left-content-wrapper {
+  position: absolute;
+  top: 245px;/* Position it near your bottom dot */
+  left: 5%;
+  width: 350px;
+  text-align: right;
+  opacity: 0;      /* Start hidden */
+  z-index: 100;    /* High value to be above everything */
+  pointer-events: none;
+  transform: translateY(30px); /* Start slightly lower for a rise effect */
+}
+
+.line-left-content-title {
+  font-size: 1.2rem;
+  padding: 4px;
+  right: 8%;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.line-left-content {
+  font-size: 0.85rem;
+  color: #ffffff;
+  margin: 5px 0 0 0;
+}
+
